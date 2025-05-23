@@ -1,9 +1,9 @@
-# Spring Boot Application with Hexagonal Architecture
+# Spring Boot Application with Hexagonal Architecture and DDD
 
-This project is built using Spring Boot 3.5.0 and follows the Hexagonal Architecture (also known as Ports and Adapters) pattern, which separates the application into layers:
+This project is built using Spring Boot 3.5.0 and follows both Hexagonal Architecture (also known as Ports and Adapters) and Domain-Driven Design (DDD) principles. The architecture separates the application into layers:
 
-- Domain (core business logic)
-- Application (use cases)
+- Domain (core business logic and DDD concepts like entities, value objects, aggregates, and domain services)
+- Application (use cases and ports)
 - Infrastructure (external interfaces)
 
 ## Prerequisites
