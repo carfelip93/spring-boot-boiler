@@ -6,6 +6,49 @@ This project is built using Spring Boot 3.5.0 and follows both Hexagonal Archite
 - Application (use cases and ports)
 - Infrastructure (external interfaces)
 
+## Project Structure Example
+
+```
+src/main/java/com/rocketicg/app/
+├── domain/
+│   ├── user/
+│   │   ├── model/
+│   │   │   ├── User.java (Entity)
+│   │   │   ├── UserId.java (Value Object)
+│   │   │   └── Email.java (Value Object)
+│   │   ├── repository/
+│   │   │   └── UserRepository.java (Repository Interface)
+│   │   └── service/
+│   │       └── UserDomainService.java
+│   └── product/
+│       ├── model/
+│       │   ├── Product.java (Entity)
+│       │   ├── ProductId.java (Value Object)
+│       │   └── Price.java (Value Object)
+│   │   ├── repository/
+│   │   │   └── ProductRepository.java (Repository Interface)
+│   │   └── service/
+│   │       └── ProductDomainService.java
+│   ├── application/
+│   │   ├── user/
+│   │   │   ├── UserService.java
+│   │   │   └── dto/
+│   │   │   └── UserDTO.java
+│   │   └── product/
+│   │   │   ├── ProductService.java
+│   │   │   └── dto/
+│   │   │   └── ProductDTO.java
+│   │   └── user/
+│   │   └── product/
+│   └── infrastructure/
+│       ├── user/
+│       │   └── JpaUserRepository.java
+│       └── product/
+│           └── JpaProductRepository.java
+└── api/
+    └── UserController.java
+```
+
 ## Prerequisites
 
 - Java 17 or higher
