@@ -2,6 +2,10 @@ package com.rocketicg.app.infrastructure.user.web;
 
 import com.rocketicg.app.domain.user.User;
 import com.rocketicg.app.domain.user.port.UserService;
+import com.rocketicg.app.infrastructure.user.web.dto.PasswordChangeRequest;
+import com.rocketicg.app.infrastructure.user.web.dto.ProfileUpdateRequest;
+import com.rocketicg.app.infrastructure.user.web.dto.UserRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.rocketicg.app.infrastructure.product.web;
+package com.rocketicg.app.infrastructure.product.web.dto;
 
 import lombok.Data;
 

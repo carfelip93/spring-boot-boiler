@@ -2,6 +2,9 @@ package com.rocketicg.app.infrastructure.product.web;
 
 import com.rocketicg.app.domain.product.Product;
 import com.rocketicg.app.domain.product.port.ProductService;
+import com.rocketicg.app.infrastructure.product.web.dto.ProductRequest;
+import com.rocketicg.app.infrastructure.product.web.dto.StockRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
