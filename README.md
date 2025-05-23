@@ -6,48 +6,84 @@ This project is built using Spring Boot 3.5.0 and follows both Hexagonal Archite
 - Application (use cases and ports)
 - Infrastructure (external interfaces)
 
-## Project Structure Example
+## Project Structure
 
 ```
 src/main/java/com/rocketicg/app/
 ├── domain/
-│   ├── user/
-│   │   ├── model/
-│   │   │   ├── User.java (Entity)
-│   │   │   ├── UserId.java (Value Object)
-│   │   │   └── Email.java (Value Object)
-│   │   ├── repository/
-│   │   │   └── UserRepository.java (Repository Interface)
-│   │   └── service/
-│   │       └── UserDomainService.java
 │   └── product/
 │       ├── model/
 │       │   ├── Product.java (Entity)
-│       │   ├── ProductId.java (Value Object)
-│       │   └── Price.java (Value Object)
-│   │   ├── repository/
-│   │   │   └── ProductRepository.java (Repository Interface)
-│   │   └── service/
-│   │       └── ProductDomainService.java
-│   ├── application/
-│   │   ├── user/
-│   │   │   ├── UserService.java
-│   │   │   └── dto/
-│   │   │   └── UserDTO.java
-│   │   └── product/
-│   │   │   ├── ProductService.java
-│   │   │   └── dto/
-│   │   │   └── ProductDTO.java
-│   │   └── user/
-│   │   └── product/
-│   └── infrastructure/
-│       ├── user/
-│       │   └── JpaUserRepository.java
-│       └── product/
-│           └── JpaProductRepository.java
+│       │   ├── Price.java (Value Object)
+│       │   └── ProductStatistics.java (Value Object)
+│       ├── event/
+│       │   └── ProductCreatedEvent.java
+│       ├── specification/
+│       │   ├── ProductSpecification.java
+│       │   ├── ProductInStockSpecification.java
+│       │   └── ProductPriceRangeSpecification.java
+│       ├── service/
+│       │   └── ProductDomainService.java
+│       └── repository/
+│           └── ProductRepository.java
+├── application/
+│   └── product/
+│       ├── port/
+│       │   └── ProductUseCase.java
+│       ├── dto/
+│       │   ├── ProductRequest.java
+│       │   ├── ProductResponse.java
+│       │   └── StockRequest.java
+│       └── service/
+│           └── ProductService.java
+├── infrastructure/
+│   └── product/
+│       ├── persistence/
+│       │   └── JpaProductRepository.java
+│       └── config/
+│           └── ProductPersistenceConfig.java
 └── api/
-    └── UserController.java
+    └── product/
+        ├── controller/
+        │   └── ProductController.java
+        └── exception/
+            └── ProductExceptionHandler.java
 ```
+
+## Architecture Overview
+
+### Domain Layer
+
+- **Models**: Core business entities and value objects
+- **Events**: Domain events for event-driven architecture
+- **Specifications**: Business rules and query specifications
+- **Services**: Domain services for complex business logic
+- **Repository**: Domain repository interfaces
+
+### Application Layer
+
+- **Ports**: Use case interfaces (input ports)
+- **DTOs**: Data transfer objects for API communication
+- **Services**: Implementation of use cases
+
+### Infrastructure Layer
+
+- **Persistence**: JPA repository implementations
+- **Config**: Infrastructure configuration
+
+### API Layer
+
+- **Controllers**: REST API endpoints
+- **Exception**: Global exception handling
+
+## Technologies
+
+- Spring Boot 3.5.0
+- Spring Data JPA
+- H2 Database
+- Lombok
+- Swagger/OpenAPI
+- Java 17
 
 ## Prerequisites
 
@@ -78,20 +114,3 @@ mvn spring-boot:run
 ```
 
 The application will start on `http://localhost:8080`
-
-## Project Structure
-
-The project follows Hexagonal Architecture principles:
-
-- `domain/`: Contains the core business logic and domain entities
-- `application/`: Contains use cases and ports
-- `infrastructure/`: Contains adapters and external interfaces
-- `api/`: Contains REST controllers and DTOs
-
-## Technologies Used
-
-- Spring Boot 3.5.0
-- Spring Data JPA
-- H2 Database
-- Lombok
-- Maven
